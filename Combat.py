@@ -3,12 +3,14 @@ import Enemysheet, Characterclasses
 
 
 
-def combat():
+currentCharacter = vars(Characterclasses.Ranger)
+currentEnemy =(vars(choice(Enemysheet.enemyNames)))
+
+#print(currentCharacter.get('currentHP'))
+def combat(currentCharacter, currentEnemy):
     status = 'battle'
     while status == 'battle':
         #imports a random enemy and the chosen character class
-        currentEnemy = (vars(choice(Enemysheet.enemyNames)))
-        currentCharacter = vars(Characterclasses.Barbarian)
         currentEnemyHP = currentEnemy.get('currentHP')
         currentCharacterHP = currentCharacter.get('currentHP')
         #battle begins
@@ -27,15 +29,18 @@ def combat():
                     print('The ' + currentEnemy.get('name') + ' attacked you back for ' + str(enemyDamage) + ' damage.')
                     print('You have ' + str(currentCharacterHP - enemyDamage) + ' health remaining.\n')
                     currentCharacterHP -= enemyDamage
+                    currentCharacter['currentHP'] = currentCharacterHP
                     #if you die
                     if currentCharacterHP <= 0:
                         print('You have died')
                         status = 'Dead'
+                        currentCharacter['currentHP'] = currentCharacterHP
                         break
                 #if you kill the enemy
                 else:
                     print('You slayed the ' + currentEnemy.get('name') + '.')
                     status = 'normal'
+                    currentCharacter['currentHP'] = currentCharacterHP
                     break
 
                 #deciding to fight again after attacking at least once
@@ -45,6 +50,7 @@ def combat():
                 elif keepAttacking == 'r':
                     print('You escaped safely')
                     status = 'normal'
+                    currentCharacter['currentHP'] = currentCharacterHP
                     break
 
 
@@ -57,9 +63,13 @@ def combat():
             print('You escpaed safely')
             status = 'normal'
             print('\nYour status is ' + status)
+            currentCharacter['currentHP'] = currentCharacterHP
             break
 
     else:
         print('\nYour status is "' + status + '"')
+        currentCharacter['currentHP'] = currentCharacterHP
 
-combat()
+combat(currentCharacter, vars(choice(Enemysheet.enemyNames)))
+#print(currentCharacter.get('currentHP'))
+combat(currentCharacter, vars(Enemysheet.Boss))
