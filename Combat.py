@@ -3,8 +3,8 @@ import Enemysheet, Characterclasses
 
 
 
-currentCharacter = vars(Characterclasses.Ranger)
-currentEnemy =(vars(choice(Enemysheet.enemyNames)))
+#currentCharacter = vars(Characterclasses.Ranger)
+#currentEnemy =(vars(choice(Enemysheet.enemyNames)))
 
 #print(currentCharacter.get('currentHP'))
 def combat(currentCharacter, currentEnemy):
@@ -70,6 +70,6 @@ def combat(currentCharacter, currentEnemy):
         print('\nYour status is "' + status + '"')
         currentCharacter['currentHP'] = currentCharacterHP
 
-combat(currentCharacter, vars(choice(Enemysheet.enemyNames)))
+#combat(currentCharacter, vars(choice(Enemysheet.enemyNames)))
 #print(currentCharacter.get('currentHP'))
-combat(currentCharacter, vars(Enemysheet.Boss))
+#combat(currentCharacter, vars(Enemysheet.Boss))
